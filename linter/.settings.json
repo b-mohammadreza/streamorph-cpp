@@ -1,0 +1,51 @@
+{
+    "clang-tidy":
+    {
+        "place_holders":["build_path"],
+        "options":
+        [
+            "--use-color"
+            ,"-p {build_path}"  // 'build_path' is a placeholder
+            ,[
+             "--checks="
+             ,"-*"
+             // ,",abseil-*"
+             // ,",boost-*"
+             // ,",bugprone-*"
+             // ,",cert-*"
+             // ,",clang-analyzer-*"
+             // ,",concurrency-*"
+             // ,",cppcoreguidelines-*"
+             // ,",google-*"
+             // ,",hicpp-*"
+             // ,",misc-*"
+             // ,",modernize-*"
+             // ,",mpi-*"
+             // ,",openmp-*"
+             // ,",performance-*"
+             // ,",portability-*"
+             // ,",readability-*"
+             ]
+            ,[
+             "--warnings-as-errors="
+             ,"-*"
+             // ,",abseil-*"
+             // ,",boost-*"
+             // ,",bugprone-*"
+             // ,",cert-*"
+             // ,",clang-analyzer-*"
+             // ,",concurrency-*"
+             // ,",cppcoreguidelines-*"
+             // ,",google-*"
+             // ,",hicpp-*"
+             // ,",misc-*"
+             // ,",modernize-*"
+             // ,",mpi-*"
+             // ,",openmp-*"
+             // ,",performance-*"
+             // ,",portability-*"
+             // ,",readability-*"
+             ]
+        ]
+    }
+}
