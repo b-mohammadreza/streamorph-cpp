@@ -1,5 +1,5 @@
 # Author: Mohammadreza Bahmanpour
-# Copyright 2023 streamorph.live project
+# Copyright 2023 streamorph.live project.
 # All rights reserved. Please refer to LICENSE file for details
 
 # Removed the shebang for now
