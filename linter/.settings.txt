@@ -1,0 +1,63 @@
+# Author: Mohammadreza Bahmanpour
+# Copyright 2023 streamorph.live project
+# All rights reserved. Please refer to LICENSE file for details
+
+# .txt version of '.settings.json'. This file created due to issues 
+# regarding commenting out sections in '.settings.json' file.
+# This file keeps all the available linters parameters, so copy an 
+# option to the original '.settings.json' file will be easier!
+
+{
+    "clang-tidy":
+    {
+        "enabled":"true",
+        // Need to search place_holders in env variable
+        "place_holders":["build_path"],
+        "options":
+        [
+            "--use-color"
+            ,"-p {build_path}"  // 'build_path' is a placeholder
+            ,[
+             "--checks="
+             ,"-*"
+             // ,",abseil-*"
+             // ,",boost-*"
+             // ,",bugprone-*"
+             // ,",cert-*"
+             ,",clang-analyzer-*"
+             // ,",concurrency-*"
+             // ,",cppcoreguidelines-*"
+             // ,",google-*"
+             // ,",hicpp-*"
+             // ,",misc-*"
+             // ,",modernize-*"
+             // ,",mpi-*"
+             // ,",openmp-*"
+             // ,",performance-*"
+             // ,",portability-*"
+             // ,",readability-*"
+             ]
+            ,[
+             "--warnings-as-errors="
+             ,"-*"
+             // ,",abseil-*"
+             // ,",boost-*"
+             // ,",bugprone-*"
+             // ,",cert-*"
+             // ,",clang-analyzer-*"
+             // ,",concurrency-*"
+             // ,",cppcoreguidelines-*"
+             // ,",google-*"
+             // ,",hicpp-*"
+             // ,",misc-*"
+             // ,",modernize-*"
+             // ,",mpi-*"
+             // ,",openmp-*"
+             // ,",performance-*"
+             // ,",portability-*"
+             // ,",readability-*"
+             ]
+        ]
+    }
+}
+
