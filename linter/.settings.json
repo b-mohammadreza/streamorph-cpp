@@ -5,52 +5,54 @@
 {
     "clang-tidy":
     {
-        "enabled":"true",
-        // Need to search place_holders in env variable
+        "enabled":true,
+        // Need to search place_holders in the 'main()' variables (vars()).
+        // The order of the place_holders in the list is important. Each one 
+        // will be placed in 'options' accordingly.
         "place_holders":["build_path"],
         "options":
         [
             "--use-color"
-            ,"-p {build_path}"  // 'build_path' is a placeholder
+            ,"-p %s"  // build_path placeholder
             ,[
              "--checks="
-             ,"-*"
-             // ,",abseil-*"
-             // ,",boost-*"
-             // ,",bugprone-*"
-             // ,",cert-*"
+            //  ,"-*"
+            //  ,",abseil-*"
+            //  ,",boost-*"
+            //  ,",bugprone-*"
+            //  ,",cert-*"
              ,",clang-analyzer-*"
-             // ,",concurrency-*"
-             // ,",cppcoreguidelines-*"
-             // ,",google-*"
-             // ,",hicpp-*"
-             // ,",misc-*"
-             // ,",modernize-*"
-             // ,",mpi-*"
-             // ,",openmp-*"
-             // ,",performance-*"
-             // ,",portability-*"
-             // ,",readability-*"
+            //  ,",concurrency-*"
+            //  ,",cppcoreguidelines-*"
+            //  ,",google-*"
+            //  ,",hicpp-*"
+            //  ,",misc-*"
+            //  ,",modernize-*"
+            //  ,",mpi-*"
+            //  ,",openmp-*"
+            //  ,",performance-*"
+            //  ,",portability-*"
+            //  ,",readability-*"
              ]
             ,[
              "--warnings-as-errors="
-             ,"-*"
-             // ,",abseil-*"
-             // ,",boost-*"
-             // ,",bugprone-*"
-             // ,",cert-*"
-             // ,",clang-analyzer-*"
-             // ,",concurrency-*"
-             // ,",cppcoreguidelines-*"
-             // ,",google-*"
-             // ,",hicpp-*"
-             // ,",misc-*"
-             // ,",modernize-*"
-             // ,",mpi-*"
-             // ,",openmp-*"
-             // ,",performance-*"
-             // ,",portability-*"
-             // ,",readability-*"
+            //  ,"-*"
+            //  ,",abseil-*"
+            //  ,",boost-*"
+            //  ,",bugprone-*"
+            //  ,",cert-*"
+             ,",clang-analyzer-*"
+            //  ,",concurrency-*"
+            //  ,",cppcoreguidelines-*"
+            //  ,",google-*"
+            //  ,",hicpp-*"
+            //  ,",misc-*"
+            //  ,",modernize-*"
+            //  ,",mpi-*"
+            //  ,",openmp-*"
+            //  ,",performance-*"
+            //  ,",portability-*"
+            //  ,",readability-*"
              ]
         ]
     }

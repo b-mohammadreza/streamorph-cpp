@@ -33,17 +33,17 @@ def get_source_files(build_path: str):
 
     src_files: list[str] = []
     with open(compile_commands_path, 'r', encoding='utf-8') as compile_cmds_file: 
-        src_files += json5.load(compile_cmds_file, object_hook=get_file)
+        src_files = json5.load(compile_cmds_file, object_hook=get_file)
     
-    return src_files
+    return list(set(src_files))
 
-def get_src_files_paths(src_files: list[str], build_path: str):
-    src_file_paths: list[str] = []
+def get_src_files_str(src_files: list[str], build_path: str):
+    src_file_str: str = ""
 
     for src_file in src_files:
-        src_file_paths.append(os.path.join(build_path, src_file))
+        src_file_str += os.path.join(build_path, src_file) + " "
 
-    return src_file_paths
+    return src_file_str.strip()
 
 def get_file(obj):
     try:
@@ -63,7 +63,6 @@ def get_linter_params(struct:dict) -> (str, list, list):
 
     for key in struct.keys():
         value:dict = struct[key]
-        name = key
 
         is_enabled = False
         try:
@@ -74,6 +73,8 @@ def get_linter_params(struct:dict) -> (str, list, list):
         
         if is_enabled == False:
             continue
+        
+        name = key
 
         try:
             place_holders = value['place_holders']
@@ -88,6 +89,22 @@ def get_linter_params(struct:dict) -> (str, list, list):
                   In ".settings.json" each linter must define "options" setting. Description: {e}')
     
     return (name, place_holders, options)
+
+def create_options_str(options: list) -> str:
+    options_str = ''
+    for option in options:
+        if type(option) is list:
+            options_str += " "
+
+            for sub_option in option:
+                options_str += sub_option
+
+            options_str += " "
+            continue
+
+        options_str += option + " "
+
+    return options_str.strip()
 
 def main():
     if len(sys.argv) < 5:
@@ -127,22 +144,31 @@ def main():
     settings_path = create_settings_path(src_path)
     (name, place_holders, options) = get_settings(settings_path)
 
+    if len(name) < 1:
+        print(Fore.RED+f'No linter found. Please refer to ".settings.json" file in the "linter" directory' + Fore.RESET)
+        sys.exit(0)
+
+    options_str = create_options_str(options)
+
     # At this point need to replace placeholders. This task should be done in 'main()'
     # function, because all corresponding varibales to 'place_holders' are defined in
-    # the 'main()' function
-    # for option in options:
-    #     for place_holder in place_holders:
-    #         if place_holder in option:
-    #             option = option.format(place_holder='1111')
-    #             print(option)
+    # the 'main()' function, accessible using 'vars()'
+    defined_vars = vars()
+    try:
+        options_str = options_str % tuple([defined_vars[place_holder] for place_holder in place_holders])
+    except ValueError as e:
+        print(Fore.RED+f'ERROR: Not all place_holders defined in "main()". place_holders->{place_holders}. Description: {e}')
 
     src_files = get_source_files(build_path)
-    src_files = get_src_files_paths(src_files, build_path)
+    src_files_str = get_src_files_str(src_files, build_path)
 
-    # cmd: str = create_linter_cmd(name, place_holders, options, src_files)
+    cmd: str = name + " " + options_str + " " + src_files_str
 
-    print(Fore.GREEN+f'DEBUG >>> variables: {vars()}')
-    print(Fore.RESET, end='')
+    print(Fore.YELLOW + 'linter START' + Fore.RESET)
+    os.system(cmd)
+    print(Fore.YELLOW + 'linter END' + Fore.RESET)
+
+    print(Fore.GREEN+f'DEBUG >>> variables: {vars()}' + Fore.RESET)
 
 if __name__ == '__main__':
     main()

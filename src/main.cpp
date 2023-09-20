@@ -5,6 +5,7 @@
 #include <iostream>
 
 int main(int argc, char* argv[]) {
+    int i;
     std::cout << "Hello from streamorph..." << std::endl;
     return 0;
 }
