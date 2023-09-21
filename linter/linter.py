@@ -12,7 +12,7 @@ import os
 from colorama import Fore
 
 def print_usage():
-    print(Fore.CYAN+'Usage: linter.py --name <linter_cmd_name> --src <path_to_src_dir> --build <path_to_build_dir>')
+    print(Fore.CYAN+'Usage: linter.py --src <path_to_src_dir> --build <path_to_build_dir>')
     sys.exit(1)
 
 def create_settings_path(src_path) -> str:
@@ -110,21 +110,11 @@ def main():
     if len(sys.argv) < 5:
         print_usage()
 
-    linter_name: str = ''
     src_path: str = ''
     build_path: str = ''
 
-    if sys.argv[1] == '--name':
-        linter_name = sys.argv[2]
-    else:
-        print_usage()
-
-    if shutil.which(linter_name) is None:
-        print(Fore.RED+f'ERROR: Invalid linter_name: {linter_name}')
-        sys.exit(1)
-
-    if sys.argv[3] == '--src':
-        src_path = sys.argv[4]
+    if sys.argv[1] == '--src':
+        src_path = sys.argv[2]
     else:
         print_usage()
 
@@ -132,8 +122,8 @@ def main():
         print(Fore.RED+f'ERROR: Invalid src_path: {src_path}')
         sys.exit(1)
 
-    if sys.argv[5] == '--build':
-        build_path = sys.argv[6]
+    if sys.argv[3] == '--build':
+        build_path = sys.argv[4]
     else:
         print_usage()
 
@@ -147,6 +137,10 @@ def main():
     if len(name) < 1:
         print(Fore.RED+f'No linter found. Please refer to ".settings.json" file in the "linter" directory' + Fore.RESET)
         sys.exit(0)
+
+    if shutil.which(name) is None:
+        print(Fore.RED+f'ERROR: Invalid linter: {name}. No such program found.')
+        sys.exit(1)
 
     options_str = create_options_str(options)
 
