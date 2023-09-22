@@ -11,27 +11,37 @@ project('streamorph'
                     , 'b_coverage=true']
 , version:'0.1.0')
 
-_build_machine = build_machine.system()
+HOST_LINUX = false
+HOST_WINDOWS = false
 
+_build_machine = build_machine.system()
 if _build_machine == 'linux'
+    HOST_LINUX = true
+endif
+
+if _build_machine == 'windows'
+    HOST_WINDOWS = true
+endif
+
+if HOST_LINUX
     executable('streamorph', 'src/main.cpp')
-elif _build_machine == 'windows'
+elif HOST_WINDOWS
     # TODO: test in Windows (need to change '/')
 endif
 
-if _build_machine == 'linux'
+if HOST_LINUX
     python_bin = find_program('python', 'python3', 'python2', required: true)
-elif _build_machine == 'windows'
+elif HOST_WINDOWS
     # TODO: test in Windows (is '.exe' required?)
 endif
 
-if _build_machine == 'linux'
+if HOST_LINUX
     run_target('run_linter', command: [python_bin
                                         , '@SOURCE_ROOT@/linter/linter.py'
                                         , '--src'
                                         , '@SOURCE_ROOT@'
                                         , '--build'
                                         , '@BUILD_ROOT@'])
-elif _build_machine == 'windows'
+elif HOST_WINDOWS
     # TODO: test in Windows (need to change '/')
 endif
