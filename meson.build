@@ -7,7 +7,8 @@ project('streamorph'
 , 'cpp'
 , default_options:['c_std=c2x'
                     , 'cpp_std=c++20'
-                    , 'b_sanitize=address,undefined']
+                    , 'b_sanitize=address,undefined'
+                    , 'b_coverage=true']
 , version:'0.1.0')
 
 _build_machine = build_machine.system()
