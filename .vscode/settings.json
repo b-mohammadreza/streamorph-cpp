@@ -1,3 +1,7 @@
 {
-    "C_Cpp.default.compileCommands": "build_debug/compile_commands.json"
+    "C_Cpp.default.compileCommands": "build_debug/compile_commands.json",
+    "mesonbuild.configureOnOpen": false,
+    "mesonbuild.configureOptions": [
+
+    ]
 }

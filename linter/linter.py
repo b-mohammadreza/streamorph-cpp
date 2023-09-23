@@ -6,9 +6,9 @@
 
 import sys
 import shutil
-import json5
 import os
 
+import json5
 from colorama import Fore
 
 def print_usage():
