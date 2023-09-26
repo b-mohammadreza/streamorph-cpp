@@ -25,6 +25,8 @@ endif
 
 if HOST_LINUX
     executable('streamorph', 'src/main.cpp')
+    st = executable('sampletest', 'test/test_main.cpp', dependencies: dependency('gtest_main'))
+    test('first_test', st)
 
 elif HOST_WINDOWS
     # TODO: test in Windows (need to change '/')
