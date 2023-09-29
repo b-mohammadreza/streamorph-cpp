@@ -24,13 +24,7 @@ if _build_machine == 'windows'
     HOST_WINDOWS = true
 endif
 
-if HOST_LINUX
-    inc_dirs = include_directories('include'
-                                   , 'include/gui')
-elif HOST_WINDOWS
-    # TODO: test in Windows (need to change '/')
-endif
-
+subdir('include')
 subdir('src')
 subdir('test')
 
