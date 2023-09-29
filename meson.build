@@ -9,7 +9,8 @@ project('streamorph'
                     , 'cpp_std=c++20'
                     , 'b_sanitize=address,undefined'
                     , 'b_coverage=true']
-, version:'0.1.0')
+, version:'0.1.0'
+, license: 'GPL-3.0')
 
 HOST_LINUX = false
 HOST_WINDOWS = false
@@ -24,13 +25,14 @@ if _build_machine == 'windows'
 endif
 
 if HOST_LINUX
-    executable('streamorph', 'src/main.cpp')
-    st = executable('sampletest', 'test/test_main.cpp', dependencies: dependency('gtest_main'))
-    test('first_test', st)
-
+    inc_dirs = include_directories('include'
+                                   , 'include/gui')
 elif HOST_WINDOWS
     # TODO: test in Windows (need to change '/')
 endif
+
+subdir('src')
+subdir('test')
 
 if HOST_LINUX
     python_bin = find_program('python', 'python3', 'python2', required: true)
