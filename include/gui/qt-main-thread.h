@@ -2,3 +2,17 @@
 // Copyright 2023 streamorph.live project.
 // All rights reserved. Please refer to LICENSE file for more details.
 
+#include <memory>
+
+class QtMainThreadWrapper {
+private:
+    QtMainThreadWrapper() = default;
+
+public:
+    std::shared_ptr<QtMainThreadWrapper> getInstance(int argc, char* argv[]);
+    void run();
+
+private:
+    std::shared_ptr<QtMainThreadWrapper> _instance = nullptr;
+    QApplication _qtApp;
+};
