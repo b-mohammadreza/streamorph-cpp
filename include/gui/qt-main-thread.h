@@ -3,16 +3,22 @@
 // All rights reserved. Please refer to LICENSE file for more details.
 
 #include <memory>
+#include "qt-widgets-interface.h"
 
-class QtMainThreadWrapper {
-private:
-    QtMainThreadWrapper() = default;
+namespace streamorph::gui {
+    
+    class IQtWidgetsContainer;
+    class QtMainThreadWrapper {
+    public:
+        static std::shared_ptr<QtMainThreadWrapper> getInstance(int argc, char* argv[]);
+        int run();
 
-public:
-    std::shared_ptr<QtMainThreadWrapper> getInstance(int argc, char* argv[]);
-    void run();
+    private:
+        QtMainThreadWrapper() = default;
+        static void initWidgetsContainer(int argc, char* argv[]);
 
-private:
-    std::shared_ptr<QtMainThreadWrapper> _instance = nullptr;
-    QApplication _qtApp;
-};
+    private:
+        static std::shared_ptr<QtMainThreadWrapper> _instance;
+        std::unique_ptr<IQtWidgetsContainer> _qtWidgetsContainer = nullptr;
+    };
+}

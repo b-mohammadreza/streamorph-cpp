@@ -6,6 +6,9 @@ src_files = ['main.cpp']
 
 subdir('gui')
 
+deps = [dependency('Qt6Core'), dependency('Qt6Gui'), dependency('Qt6Widgets')]
+
 streamorph_bin = executable('streamorph'
                             , sources: src_files
-                            , include_directories: inc_dirs)
+                            , include_directories: inc_dirs
+                            , dependencies: deps)
