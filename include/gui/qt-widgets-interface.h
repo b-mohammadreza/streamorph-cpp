@@ -7,8 +7,7 @@
 namespace streamorph::gui {
     class IQtWidgetsContainer {
     public:
-        virtual void init(int argc, char* argv[]) = 0;
+        virtual void init() = 0;
         virtual void show() = 0;
-        virtual int exec() = 0;
     };
 }

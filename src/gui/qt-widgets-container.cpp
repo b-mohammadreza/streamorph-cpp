@@ -6,15 +6,10 @@
 
 using namespace streamorph::gui;
 
-void QtWidgetsContainer::init(int argc, char* argv[]) {
-    _qtApp = std::make_unique<QApplication>(argc, argv);
+void QtWidgetsContainer::init() {
     _btnHWorld = std::make_unique<QPushButton>("Hello World!");
 }
 
 void QtWidgetsContainer::show() {
     _btnHWorld->show();
-}
-
-int QtWidgetsContainer::exec() {
-    return _qtApp->exec();
 }
