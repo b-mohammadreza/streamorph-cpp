@@ -2,7 +2,9 @@
 # Copyright 2023 streamorph.live project.
 # All rights reserved. Please refer to LICENSE file for more details.
 
-inc_dir_system = ['/usr/include/qt6']
+subdir('gui')
+
+inc_dir_system = []
 inc_dir_local  = ['.', 'gui']
 
 inc_dir_list = inc_dir_system + inc_dir_local
