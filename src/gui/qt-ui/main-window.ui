@@ -13,6 +13,17 @@
   <property name="windowTitle">
    <string>Streamorph</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../qt-resources/resources.qrc">
+    <normaloff>:/icons/main-window-icon.png</normaloff>
+    <normalon>:/icons/main-window-icon.png</normalon>
+    <disabledoff>:/icons/main-window-icon.png</disabledoff>
+    <disabledon>:/icons/main-window-icon.png</disabledon>
+    <activeoff>:/icons/main-window-icon.png</activeoff>
+    <activeon>:/icons/main-window-icon.png</activeon>
+    <selectedoff>:/icons/main-window-icon.png</selectedoff>
+    <selectedon>:/icons/main-window-icon.png</selectedon>:/icons/main-window-icon.png</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget"/>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -26,6 +37,8 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="../qt-resources/resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

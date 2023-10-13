@@ -2,4 +2,4 @@
 # Copyright 2023 streamorph.live project.
 # All rights reserved. Please refer to LICENSE file for more details.
 
-qt_moc_headers = files('qt-main-window-widget.h')
+qt_uis = files('main-window.ui')

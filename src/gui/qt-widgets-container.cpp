@@ -7,9 +7,9 @@
 using namespace streamorph::gui;
 
 void QtWidgetsContainer::init() {
-    _btnHWorld = std::make_unique<QPushButton>("Hello World!");
+    _mainWindow = std::make_unique<QtMainWindowForm>(nullptr);
 }
 
 void QtWidgetsContainer::show() {
-    _btnHWorld->show();
+    _mainWindow->show();
 }

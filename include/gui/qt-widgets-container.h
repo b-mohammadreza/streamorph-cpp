@@ -6,6 +6,7 @@
 #include <QtWidgets/QPushButton>
 
 #include "qt-widgets-interface.h"
+#include "qt-main-window-widget.h"
 
 namespace streamorph::gui {
     class QtWidgetsContainer : public IQtWidgetsContainer {
@@ -14,6 +15,6 @@ namespace streamorph::gui {
         void show() override;
     
     private:
-        std::unique_ptr<QPushButton> _btnHWorld = nullptr;
+        std::unique_ptr<QtMainWindowForm> _mainWindow = nullptr;
     };
 }

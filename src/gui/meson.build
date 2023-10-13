@@ -13,16 +13,19 @@ moc_files = qt6.compile_moc(sources : []
                             , include_directories: inc_dirs
                             , dependencies: deps)
 
-# qrc_files = qt6.compile_resources(sources : []
-#                                   , extra_args: [])
-qrc_files = []
+subdir('qt-resources')
 
-# ui_files = qt6.compile_ui(sources : []
-#                           , extra_args: [])
-ui_files = []
+qrc_files = qt6.compile_resources(sources : qt_resources
+                                                   , extra_args: [])
+
+subdir('qt-ui')
+
+ui_files = qt6.compile_ui(sources : qt_uis
+                                           , extra_args: [])
 
 gui_src_files = files('qt-app-wrapper.cpp'
-                     ,'qt-widgets-container.cpp')
+                                 , 'qt-widgets-container.cpp'
+                                 , 'qt-main-window-widget.cpp')
 
 src_files += [gui_src_files]
 src_files += [moc_files] + [qrc_files] + [ui_files]
