@@ -5,7 +5,7 @@
 subdir('gui')
 
 inc_dir_system = []
-inc_dir_local  = ['.', 'gui']
+inc_dir_local  = ['.', 'gui', 'core']
 
 inc_dir_list = inc_dir_system + inc_dir_local
 
