@@ -73,5 +73,6 @@
         "cinttypes": "cpp",
         "typeinfo": "cpp",
         "variant": "cpp"
-    }
+    },
+    "files.simpleDialog.enable": true
 }
