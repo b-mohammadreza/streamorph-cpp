@@ -28,11 +28,11 @@ PKGS="make
 
 conan needs to be installed
 - Create a virtual environment dedicated to conan installation
--- python -m venv ~/conan
+- python -m venv ~/conan
 - Activate the conan virtual environment (Linux) (TODO: what is the acivation command in Windows?)
--- source ~/conan/bin/activate
+- source ~/conan/bin/activate
 - Install conan
--- pip install conan
+- pip install conan
 
 How conan executable will be found by meson?
 I do not think if the following scrips are required:
