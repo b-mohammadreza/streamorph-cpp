@@ -9,7 +9,7 @@ project('streamorph'
                     , 'cpp_std=c++20'
                     , 'b_sanitize=address,undefined'
                     , 'b_coverage=true']
-, version:'0.1.0'
+, version: '0.1.0'
 , license: 'GPL-3.0')
 
 HOST_LINUX = false

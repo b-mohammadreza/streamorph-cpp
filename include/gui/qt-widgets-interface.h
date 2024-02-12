@@ -7,6 +7,9 @@
 namespace streamorph::gui {
     class IQtWidgetsContainer {
     public:
+        virtual ~IQtWidgetsContainer() = default;
+
+    public:
         virtual void init() = 0;
         virtual void show() = 0;
     };
