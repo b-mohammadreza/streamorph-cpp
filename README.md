@@ -3,7 +3,10 @@
 Current list of dependency packages:
 (This list is not going to be maintained after using conan. This list will be removed after all the packages handled using conan) 
 
-PKGS="make
+(is MinGW required for windows version?)
+
+PKGS="pkg-config
+      make
       cmake
       meson
       ninja
