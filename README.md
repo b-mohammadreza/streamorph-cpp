@@ -5,6 +5,8 @@ Current list of dependency packages:
 
 (is MinGW required for windows version?)
 
+high-level python build script: need to install git, python, pkg_cfg and conan first
+
 PKGS="pkg-config
       make
       cmake
